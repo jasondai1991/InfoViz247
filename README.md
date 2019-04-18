@@ -24,6 +24,7 @@ Similarly, the user can choose only City / Airline dimension and then select the
 Users can freely change the dimensions.
 
 <b>Chart 2 Flight delays over a year of each airline</b>
+
 This is inspired by the wealth& nations visualization we see from class. See the 12 circles on my visualizations represent each airline company. This charts depicts the flight delay condition for each airline everyday over a year. The xAxis is the average delay time, yAxis is the delay rate of that airline on that day, and the size of the circle is the flight number of that airline that day. Users can see the relation between delay rate and average delay time, as well as how the size of the company influences that.
 When the user hovers over a circle, he will get detailed information regarding the delay.
 
