@@ -76,7 +76,7 @@ function start(){
   var elem = document.getElementById('start_button');
   elem.parentNode.removeChild(elem);
 
-  d3.json("./airline_delay.json", function(flights) {
+  d3.json("../ReadyData/airline_delay.json", function(flights) {
 
     var bisect = d3.bisector(function(d) { return d[0]; });
 
