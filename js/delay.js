@@ -22,9 +22,9 @@ var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 29.5},
     width = 750 - margin.right-margin.left,
     height = 500 - margin.top - margin.bottom;
 
-var xScale = d3.scale.pow().exponent(0.3).domain([0,90]).range([0, width]),
-    yScale = d3.scale.linear().domain([0, 1]).range([height, 0]),
-    radiusScale = d3.scale.sqrt().domain([50, 3400]).range([0, 50]),
+var xScale = d3.scale.pow().exponent(0.7).domain([0,50]).range([0, width]),
+    yScale = d3.scale.linear().domain([0, 0.8]).range([height, 0]),
+    radiusScale = d3.scale.sqrt().domain([0, 3000]).range([0, 50]),
     colorScale = d3.scale.category20();
 
 var xAxis = d3.svg.axis().orient("bottom").scale(xScale).ticks(10),
@@ -76,7 +76,7 @@ function start(){
   var elem = document.getElementById('start_button');
   elem.parentNode.removeChild(elem);
 
-  d3.json("../ReadyData/airline_delay.json", function(flights) {
+  d3.json("./airline_delay.json", function(flights) {
 
     var bisect = d3.bisector(function(d) { return d[0]; });
 
@@ -121,7 +121,7 @@ function start(){
           .on("mouseover", enableInteraction);
 
     svg.transition()
-        .duration(50000)
+        .duration(20000)
         .ease("linear")
         .tween("date", tweenDate)
         .each("end", enableInteraction);
@@ -142,7 +142,7 @@ function start(){
 
     function enableInteraction() {
       var dateScale = d3.scale.linear()
-          .domain([1, 365])
+          .domain([1, 53])
           .range([box.x - 4.5* box.width+5, box.x + box.width-5 ])
           .clamp(true);
 
@@ -169,13 +169,14 @@ function start(){
 
 
     function tweenDate() {
-      var date = d3.interpolateNumber(1, 365);
+      var date = d3.interpolateNumber(1, 53);
       return function(t) { displayDate(date(t)); };
     }
 
     function displayDate(date) {
       dot.data(interpolateData(date)).call(position).sort(order);
-      label.text(convert_date(Math.round(date)));
+      var day = (Math.round(date)-1)*7+1;
+      label.text(convert_date(day));
     }
 
     function convert_date(date){
