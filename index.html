@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <title>Just the flights</title>
+  <style>
+    #chart {
+      margin-left: -40px;
+      height: 506px;
+    }
+
+    select {
+        display: block;
+    }
+    .bar {
+        fill:#00BFFF;
+        opacity: 0.8;
+    }
+
+    .peak_bar{
+        fill:red;
+    }
+
+    text {
+      font: 10px sans-serif;
+    }
+
+    .button{
+      height:30px;
+      width:60px;
+      border-radius: 4px;
+      background-color: #e7e7e7;
+      border:0px;
+    }
+
+    .tooltip { 
+      position: absolute;     
+      text-align: left;     
+      width: 120px;          
+      height: 58px;      
+      padding: 5px;       
+      font: 12px sans-serif;    
+      background: lightsteelblue; 
+      border: 0px;    
+      border-radius: 8px;     
+      pointer-events: none;     
+    }
+
+
+    .axis path, .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+
+    .label {
+      fill: #777;
+    }
+
+    .date.label {
+      font: 500 66px "Helvetica Neue";
+      fill: #ddd;
+    }
+
+    .compare.label {
+      font: 500 25px "Helvetica Neue";
+      fill: #00BFFF;
+    }
+
+    .compare.text {
+      font: 500 16px "Helvetica Neue";
+      fill: #777;
+    }
+
+    .date.label.active {
+      fill: #aaa;
+    }
+
+    .overlay {
+      fill: none;
+      pointer-events: all;
+      cursor: ew-resize;
+    }
+  </style>
+
+  <header>
+  </header>
+  <body>
+    <div style="text-align: center">
+        <h1>Average flight traffic of every 10 minutes a day</h1>
+        <p> Choose Dimension:&nbsp
+        <button id="airlineBtn" onclick="selectAirline()" class="button">
+          Airline
+        </button>
+        &nbsp&nbsp
+        <button id="cityBtn" onclick="selectCity()" class="button">
+          City
+        </button>
+        &nbsp&nbsp
+        <button id="bothBtn" onclick="selectBoth()" class="button">
+          Tiered
+        </button>
+        </p>
+    </div>
+    <div style="text-align: center">
+        <div id="Both" style="display: none;" align = "center">
+        </div> 
+        <div id='vis-container1' style="display: inline-block" align = "center"></div>
+        <div id='vis-container2' style="display: inline-block" align = "center"></div>
+    </div>
+    <div></div>
+    <div></div>
+    <div style="text-align: center">
+      <div>
+        <h1>Flight delays over a year of each airline</h1>
+        <button onclick="start()" id="start_button">start</button>
+      </div>
+      <p id="chart-delay" style="display: inline-block"></p>
+      <p style="text-align: center">Mouseover the date to move forward and backwards through time.</p>
+    </div>
+
+    <script src="https://d3js.org/d3.v3.min.js"> </script>
+    <script src="js/delay.js" defer></script>
+    <script src="js/bar.js"></script>
+  </body>
+</html>
