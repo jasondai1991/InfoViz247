@@ -1,4 +1,4 @@
-var fileName = "./../ReadyData/chart2.csv";
+var fileName = "./ReadyData/chart2.csv";
 var chartLables = [];
 
 var airline_translation = {"NK":"Spirit",
